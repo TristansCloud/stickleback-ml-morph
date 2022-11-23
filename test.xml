@@ -1,0 +1,447 @@
+<?xml version="1.0" ?>
+<dataset>
+   <name/>
+   <comment/>
+   <images>
+      <image file="test/BW00292SALM16.jpg">
+         <box top="1" left="1" width="5998" height="3998">
+            <part name="0" x="2023" y="2192"/>
+            <part name="1" x="2039" y="2163"/>
+            <part name="2" x="2067" y="2147"/>
+            <part name="3" x="2171" y="2098"/>
+            <part name="4" x="2343" y="1959"/>
+            <part name="5" x="2219" y="2092"/>
+            <part name="6" x="2489" y="2064"/>
+            <part name="7" x="2638" y="1898"/>
+            <part name="8" x="3031" y="1818"/>
+            <part name="9" x="3282" y="1830"/>
+            <part name="10" x="3665" y="1902"/>
+            <part name="11" x="4181" y="2023"/>
+            <part name="12" x="4510" y="2052"/>
+            <part name="13" x="4643" y="2107"/>
+            <part name="14" x="4510" y="2172"/>
+            <part name="15" x="4234" y="2223"/>
+            <part name="16" x="3860" y="2338"/>
+            <part name="17" x="3563" y="2375"/>
+            <part name="18" x="3181" y="2427"/>
+            <part name="19" x="3062" y="2397"/>
+            <part name="20" x="2662" y="2394"/>
+            <part name="21" x="2181" y="2338"/>
+            <part name="22" x="2181" y="2244"/>
+            <part name="23" x="2557" y="2303"/>
+            <part name="24" x="2625" y="2077"/>
+            <part name="25" x="2651" y="2293"/>
+            <part name="26" x="2799" y="2097"/>
+            <part name="27" x="3216" y="2042"/>
+            <part name="28" x="3664" y="2090"/>
+            <part name="29" x="4228" y="2125"/>
+            <part name="30" x="4506" y="2110"/>
+            <part name="31" x="2830" y="2173"/>
+            <part name="32" x="2362" y="2357"/>
+            <part name="33" x="3042" y="1589"/>
+            <part name="34" x="3456" y="1583"/>
+            <part name="35" x="4479" y="2059"/>
+            <part name="36" x="4483" y="2169"/>
+            <part name="37" x="3181" y="2360"/>
+            <part name="38" x="2868" y="1920"/>
+            <part name="39" x="3356" y="2008"/>
+         </box>
+      </image>
+      <image file="test/BW00292SALM30.jpg">
+         <box top="1" left="1" width="5998" height="3998">
+            <part name="0" x="793" y="1506"/>
+            <part name="1" x="825" y="1461"/>
+            <part name="2" x="864" y="1446"/>
+            <part name="3" x="1038" y="1401"/>
+            <part name="4" x="1338" y="1193"/>
+            <part name="5" x="1140" y="1397"/>
+            <part name="6" x="1537" y="1371"/>
+            <part name="7" x="1830" y="1105"/>
+            <part name="8" x="2396" y="1011"/>
+            <part name="9" x="2765" y="999"/>
+            <part name="10" x="3440" y="1023"/>
+            <part name="11" x="4383" y="1124"/>
+            <part name="12" x="4800" y="1078"/>
+            <part name="13" x="4988" y="1148"/>
+            <part name="14" x="4829" y="1288"/>
+            <part name="15" x="4466" y="1376"/>
+            <part name="16" x="3878" y="1674"/>
+            <part name="17" x="3297" y="1968"/>
+            <part name="18" x="2658" y="2002"/>
+            <part name="19" x="2361" y="1922"/>
+            <part name="20" x="1857" y="1889"/>
+            <part name="21" x="1056" y="1773"/>
+            <part name="22" x="1028" y="1644"/>
+            <part name="23" x="1614" y="1780"/>
+            <part name="24" x="1748" y="1393"/>
+            <part name="25" x="1813" y="1761"/>
+            <part name="26" x="2007" y="1438"/>
+            <part name="27" x="2684" y="1399"/>
+            <part name="28" x="3438" y="1288"/>
+            <part name="29" x="4455" y="1240"/>
+            <part name="30" x="4819" y="1172"/>
+            <part name="31" x="2132" y="1485"/>
+            <part name="32" x="1338" y="1872"/>
+            <part name="33" x="2499" y="646"/>
+            <part name="34" x="2973" y="647"/>
+            <part name="35" x="4743" y="1104"/>
+            <part name="36" x="4784" y="1286"/>
+            <part name="37" x="2618" y="1913"/>
+            <part name="38" x="2110" y="1157"/>
+            <part name="39" x="2930" y="1243"/>
+         </box>
+      </image>
+      <image file="test/CW00334VICT12.jpg">
+         <box top="1" left="1" width="5998" height="3998">
+            <part name="0" x="1802" y="1764"/>
+            <part name="1" x="1828" y="1730"/>
+            <part name="2" x="1866" y="1708"/>
+            <part name="3" x="1959" y="1687"/>
+            <part name="4" x="2167" y="1543"/>
+            <part name="5" x="2040" y="1679"/>
+            <part name="6" x="2304" y="1661"/>
+            <part name="7" x="2521" y="1407"/>
+            <part name="8" x="2936" y="1337"/>
+            <part name="9" x="3184" y="1324"/>
+            <part name="10" x="3615" y="1325"/>
+            <part name="11" x="4316" y="1426"/>
+            <part name="12" x="4681" y="1469"/>
+            <part name="13" x="4841" y="1574"/>
+            <part name="14" x="4685" y="1634"/>
+            <part name="15" x="4363" y="1664"/>
+            <part name="16" x="3933" y="1826"/>
+            <part name="17" x="3500" y="1979"/>
+            <part name="18" x="3154" y="2031"/>
+            <part name="19" x="2967" y="1980"/>
+            <part name="20" x="2484" y="1990"/>
+            <part name="21" x="1994" y="1954"/>
+            <part name="22" x="2002" y="1865"/>
+            <part name="23" x="2378" y="1906"/>
+            <part name="24" x="2458" y="1620"/>
+            <part name="25" x="2482" y="1890"/>
+            <part name="26" x="2659" y="1662"/>
+            <part name="27" x="3093" y="1630"/>
+            <part name="28" x="3617" y="1551"/>
+            <part name="29" x="4352" y="1523"/>
+            <part name="30" x="4684" y="1539"/>
+            <part name="31" x="2691" y="1732"/>
+            <part name="32" x="2165" y="1967"/>
+            <part name="33" x="2921" y="1088"/>
+            <part name="34" x="3311" y="1058"/>
+            <part name="35" x="4650" y="1472"/>
+            <part name="36" x="4648" y="1626"/>
+            <part name="37" x="3087" y="1966"/>
+            <part name="38" x="2801" y="1455"/>
+            <part name="39" x="3271" y="1489"/>
+         </box>
+      </image>
+      <image file="test/EC00126CAMB25.jpg">
+         <box top="1" left="1" width="5998" height="3998">
+            <part name="0" x="791" y="937"/>
+            <part name="1" x="835" y="873"/>
+            <part name="2" x="909" y="853"/>
+            <part name="3" x="1109" y="812"/>
+            <part name="4" x="1449" y="633"/>
+            <part name="5" x="1235" y="812"/>
+            <part name="6" x="1658" y="827"/>
+            <part name="7" x="2014" y="583"/>
+            <part name="8" x="2567" y="593"/>
+            <part name="9" x="2996" y="604"/>
+            <part name="10" x="3557" y="613"/>
+            <part name="11" x="4731" y="691"/>
+            <part name="12" x="5111" y="690"/>
+            <part name="13" x="5334" y="773"/>
+            <part name="14" x="5127" y="877"/>
+            <part name="15" x="4732" y="953"/>
+            <part name="16" x="3997" y="1299"/>
+            <part name="17" x="3489" y="1491"/>
+            <part name="18" x="2787" y="1537"/>
+            <part name="19" x="2573" y="1482"/>
+            <part name="20" x="1840" y="1440"/>
+            <part name="21" x="1082" y="1212"/>
+            <part name="22" x="1070" y="1055"/>
+            <part name="23" x="1700" y="1286"/>
+            <part name="24" x="1861" y="874"/>
+            <part name="25" x="1823" y="1237"/>
+            <part name="26" x="2147" y="968"/>
+            <part name="27" x="2763" y="949"/>
+            <part name="28" x="3569" y="873"/>
+            <part name="29" x="4730" y="821"/>
+            <part name="30" x="5120" y="777"/>
+            <part name="31" x="2193" y="954"/>
+            <part name="32" x="1434" y="1355"/>
+            <part name="33" x="2736" y="99"/>
+            <part name="34" x="3368" y="232"/>
+            <part name="35" x="5064" y="704"/>
+            <part name="36" x="5079" y="885"/>
+            <part name="37" x="2771" y="1407"/>
+            <part name="38" x="2253" y="715"/>
+            <part name="39" x="3049" y="840"/>
+         </box>
+      </image>
+      <image file="test/FR00803SALM39.jpg">
+         <box top="1" left="1" width="5998" height="3998">
+            <part name="0" x="1004" y="1796"/>
+            <part name="1" x="1016" y="1741"/>
+            <part name="2" x="1068" y="1698"/>
+            <part name="3" x="1229" y="1636"/>
+            <part name="4" x="1530" y="1362"/>
+            <part name="5" x="1348" y="1606"/>
+            <part name="6" x="1732" y="1485"/>
+            <part name="7" x="1990" y="1220"/>
+            <part name="8" x="2568" y="1096"/>
+            <part name="9" x="2914" y="1080"/>
+            <part name="10" x="3451" y="1062"/>
+            <part name="11" x="4404" y="1276"/>
+            <part name="12" x="4895" y="1263"/>
+            <part name="13" x="5085" y="1331"/>
+            <part name="14" x="4928" y="1464"/>
+            <part name="15" x="4528" y="1575"/>
+            <part name="16" x="3801" y="1798"/>
+            <part name="17" x="3307" y="1877"/>
+            <part name="18" x="2917" y="1933"/>
+            <part name="19" x="2691" y="1929"/>
+            <part name="20" x="2079" y="2047"/>
+            <part name="21" x="1335" y="2021"/>
+            <part name="22" x="1286" y="1894"/>
+            <part name="23" x="1861" y="1920"/>
+            <part name="24" x="1965" y="1492"/>
+            <part name="25" x="1997" y="1862"/>
+            <part name="26" x="2229" y="1526"/>
+            <part name="27" x="2807" y="1515"/>
+            <part name="28" x="3461" y="1350"/>
+            <part name="29" x="4521" y="1433"/>
+            <part name="30" x="4912" y="1362"/>
+            <part name="31" x="2332" y="1680"/>
+            <part name="32" x="1565" y="2040"/>
+            <part name="33" x="2756" y="848"/>
+            <part name="34" x="3216" y="951"/>
+            <part name="35" x="4812" y="1292"/>
+            <part name="36" x="4851" y="1473"/>
+            <part name="37" x="2898" y="1871"/>
+            <part name="38" x="2364" y="1253"/>
+            <part name="39" x="3002" y="1279"/>
+         </box>
+      </image>
+      <image file="test/LS00090SALM16.jpg">
+         <box top="1" left="1" width="5998" height="3998">
+            <part name="0" x="3035" y="2126"/>
+            <part name="1" x="3049" y="2108"/>
+            <part name="2" x="3073" y="2102"/>
+            <part name="3" x="3145" y="2088"/>
+            <part name="4" x="3267" y="2032"/>
+            <part name="5" x="3188" y="2095"/>
+            <part name="6" x="3367" y="2150"/>
+            <part name="7" x="3503" y="2053"/>
+            <part name="8" x="3727" y="2061"/>
+            <part name="9" x="3867" y="2064"/>
+            <part name="10" x="4175" y="2083"/>
+            <part name="11" x="4553" y="2190"/>
+            <part name="12" x="4783" y="2296"/>
+            <part name="13" x="4850" y="2348"/>
+            <part name="14" x="4758" y="2360"/>
+            <part name="15" x="4537" y="2325"/>
+            <part name="16" x="4300" y="2363"/>
+            <part name="17" x="4011" y="2424"/>
+            <part name="18" x="3827" y="2424"/>
+            <part name="19" x="3693" y="2411"/>
+            <part name="20" x="3420" y="2387"/>
+            <part name="21" x="3123" y="2237"/>
+            <part name="22" x="3128" y="2201"/>
+            <part name="23" x="3334" y="2298"/>
+            <part name="24" x="3425" y="2177"/>
+            <part name="25" x="3406" y="2318"/>
+            <part name="26" x="3527" y="2221"/>
+            <part name="27" x="3849" y="2278"/>
+            <part name="28" x="4177" y="2210"/>
+            <part name="29" x="4543" y="2263"/>
+            <part name="30" x="4772" y="2328"/>
+            <part name="31" x="3562" y="2177"/>
+            <part name="32" x="3236" y="2337"/>
+            <part name="33" x="3742" y="2006"/>
+            <part name="34" x="4006" y="2063"/>
+            <part name="35" x="4749" y="2293"/>
+            <part name="36" x="4735" y="2353"/>
+            <part name="37" x="3817" y="2401"/>
+            <part name="38" x="3670" y="2125"/>
+            <part name="39" x="3912" y="2169"/>
+         </box>
+      </image>
+      <image file="test/SLP00316SALM05.jpg">
+         <box top="1" left="1" width="5998" height="3998">
+            <part name="0" x="1705" y="1582"/>
+            <part name="1" x="1719" y="1561"/>
+            <part name="2" x="1749" y="1548"/>
+            <part name="3" x="1844" y="1530"/>
+            <part name="4" x="2036" y="1415"/>
+            <part name="5" x="1907" y="1531"/>
+            <part name="6" x="2140" y="1531"/>
+            <part name="7" x="2280" y="1367"/>
+            <part name="8" x="2636" y="1311"/>
+            <part name="9" x="2868" y="1335"/>
+            <part name="10" x="3218" y="1363"/>
+            <part name="11" x="3800" y="1480"/>
+            <part name="12" x="4009" y="1468"/>
+            <part name="13" x="4143" y="1496"/>
+            <part name="14" x="4030" y="1577"/>
+            <part name="15" x="3815" y="1636"/>
+            <part name="16" x="3417" y="1794"/>
+            <part name="17" x="3150" y="1826"/>
+            <part name="18" x="2783" y="1872"/>
+            <part name="19" x="2637" y="1842"/>
+            <part name="20" x="2255" y="1803"/>
+            <part name="21" x="1873" y="1736"/>
+            <part name="22" x="1862" y="1663"/>
+            <part name="23" x="2183" y="1742"/>
+            <part name="24" x="2263" y="1524"/>
+            <part name="25" x="2271" y="1738"/>
+            <part name="26" x="2421" y="1561"/>
+            <part name="27" x="2767" y="1489"/>
+            <part name="28" x="3211" y="1549"/>
+            <part name="29" x="3812" y="1559"/>
+            <part name="30" x="4019" y="1525"/>
+            <part name="31" x="2449" y="1611"/>
+            <part name="32" x="2027" y="1765"/>
+            <part name="33" x="2604" y="1051"/>
+            <part name="34" x="3054" y="1078"/>
+            <part name="35" x="3971" y="1482"/>
+            <part name="36" x="3992" y="1584"/>
+            <part name="37" x="2762" y="1808"/>
+            <part name="38" x="2489" y="1400"/>
+            <part name="39" x="2918" y="1457"/>
+         </box>
+      </image>
+      <image file="test/SW00322VICT21.jpg">
+         <box top="1" left="1" width="3998" height="5998">
+            <part name="0" x="59" y="2913"/>
+            <part name="1" x="71" y="2897"/>
+            <part name="2" x="121" y="2871"/>
+            <part name="3" x="274" y="2841"/>
+            <part name="4" x="553" y="2719"/>
+            <part name="5" x="392" y="2847"/>
+            <part name="6" x="705" y="2865"/>
+            <part name="7" x="954" y="2631"/>
+            <part name="8" x="1368" y="2608"/>
+            <part name="9" x="1662" y="2609"/>
+            <part name="10" x="2164" y="2612"/>
+            <part name="11" x="2998" y="2685"/>
+            <part name="12" x="3342" y="2699"/>
+            <part name="13" x="3464" y="2808"/>
+            <part name="14" x="3314" y="2878"/>
+            <part name="15" x="3076" y="2916"/>
+            <part name="16" x="2402" y="3232"/>
+            <part name="17" x="2011" y="3320"/>
+            <part name="18" x="1543" y="3369"/>
+            <part name="19" x="1385" y="3343"/>
+            <part name="20" x="896" y="3296"/>
+            <part name="21" x="296" y="3167"/>
+            <part name="22" x="298" y="3070"/>
+            <part name="23" x="757" y="3215"/>
+            <part name="24" x="883" y="2844"/>
+            <part name="25" x="866" y="3186"/>
+            <part name="26" x="1150" y="2925"/>
+            <part name="27" x="1576" y="2907"/>
+            <part name="28" x="2169" y="2881"/>
+            <part name="29" x="3061" y="2800"/>
+            <part name="30" x="3325" y="2780"/>
+            <part name="31" x="1179" y="2921"/>
+            <part name="32" x="558" y="3227"/>
+            <part name="33" x="1357" y="2306"/>
+            <part name="34" x="2025" y="2552"/>
+            <part name="35" x="3267" y="2704"/>
+            <part name="36" x="3273" y="2868"/>
+            <part name="37" x="1496" y="3313"/>
+            <part name="38" x="1182" y="2738"/>
+            <part name="39" x="1813" y="2827"/>
+         </box>
+      </image>
+      <image file="test/XX00089SALM30.jpg">
+         <box top="1" left="1" width="5998" height="3998">
+            <part name="0" x="1214" y="1560"/>
+            <part name="1" x="1234" y="1528"/>
+            <part name="2" x="1285" y="1489"/>
+            <part name="3" x="1405" y="1441"/>
+            <part name="4" x="1666" y="1256"/>
+            <part name="5" x="1494" y="1429"/>
+            <part name="6" x="1833" y="1390"/>
+            <part name="7" x="2011" y="1152"/>
+            <part name="8" x="2552" y="1032"/>
+            <part name="9" x="2928" y="1017"/>
+            <part name="10" x="3451" y="1044"/>
+            <part name="11" x="4180" y="1134"/>
+            <part name="12" x="4686" y="1184"/>
+            <part name="13" x="4876" y="1288"/>
+            <part name="14" x="4659" y="1355"/>
+            <part name="15" x="4245" y="1438"/>
+            <part name="16" x="3778" y="1680"/>
+            <part name="17" x="3401" y="1764"/>
+            <part name="18" x="2845" y="1869"/>
+            <part name="19" x="2674" y="1817"/>
+            <part name="20" x="2084" y="1864"/>
+            <part name="21" x="1440" y="1773"/>
+            <part name="22" x="1435" y="1650"/>
+            <part name="23" x="1906" y="1706"/>
+            <part name="24" x="2027" y="1402"/>
+            <part name="25" x="2045" y="1707"/>
+            <part name="26" x="2265" y="1409"/>
+            <part name="27" x="2815" y="1330"/>
+            <part name="28" x="3454" y="1333"/>
+            <part name="29" x="4238" y="1296"/>
+            <part name="30" x="4680" y="1272"/>
+            <part name="31" x="2324" y="1531"/>
+            <part name="32" x="1675" y="1823"/>
+            <part name="33" x="2460" y="613"/>
+            <part name="34" x="2990" y="593"/>
+            <part name="35" x="4644" y="1190"/>
+            <part name="36" x="4641" y="1351"/>
+            <part name="37" x="2811" y="1809"/>
+            <part name="38" x="2423" y="1190"/>
+            <part name="39" x="3020" y="1257"/>
+         </box>
+      </image>
+      <image file="test/XX00508SALM35.jpg">
+         <box top="1" left="1" width="5998" height="3998">
+            <part name="0" x="1476" y="1943"/>
+            <part name="1" x="1488" y="1917"/>
+            <part name="2" x="1509" y="1903"/>
+            <part name="3" x="1598" y="1867"/>
+            <part name="4" x="1764" y="1727"/>
+            <part name="5" x="1646" y="1863"/>
+            <part name="6" x="1885" y="1834"/>
+            <part name="7" x="2052" y="1644"/>
+            <part name="8" x="2418" y="1603"/>
+            <part name="9" x="2635" y="1613"/>
+            <part name="10" x="2993" y="1640"/>
+            <part name="11" x="3625" y="1761"/>
+            <part name="12" x="3895" y="1773"/>
+            <part name="13" x="4026" y="1827"/>
+            <part name="14" x="3893" y="1886"/>
+            <part name="15" x="3641" y="1931"/>
+            <part name="16" x="3265" y="2062"/>
+            <part name="17" x="2946" y="2128"/>
+            <part name="18" x="2596" y="2157"/>
+            <part name="19" x="2414" y="2134"/>
+            <part name="20" x="2053" y="2126"/>
+            <part name="21" x="1643" y="2079"/>
+            <part name="22" x="1628" y="2019"/>
+            <part name="23" x="1936" y="2054"/>
+            <part name="24" x="2016" y="1824"/>
+            <part name="25" x="2051" y="2038"/>
+            <part name="26" x="2162" y="1838"/>
+            <part name="27" x="2599" y="1833"/>
+            <part name="28" x="2996" y="1808"/>
+            <part name="29" x="3639" y="1844"/>
+            <part name="30" x="3895" y="1834"/>
+            <part name="31" x="2228" y="1953"/>
+            <part name="32" x="1765" y="2079"/>
+            <part name="33" x="2433" y="1399"/>
+            <part name="34" x="2798" y="1420"/>
+            <part name="35" x="3834" y="1786"/>
+            <part name="36" x="3841" y="1883"/>
+            <part name="37" x="2563" y="2103"/>
+            <part name="38" x="2315" y="1705"/>
+            <part name="39" x="2682" y="1753"/>
+         </box>
+      </image>
+   </images>
+</dataset>
