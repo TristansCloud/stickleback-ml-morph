@@ -257,7 +257,7 @@ def train_on_subset_img_prep(input_dir):
         file_sizes (dict): dictionary of the format of split_train_test, but only for one folder not train/test
     '''
     # Listing the filenames.Folders must contain only image files (extension can vary).Hidden files are ignored
-    filenames = os.listdir(input_dir)
+    filenames = os.listdir(input_dir) #TODO: allow subsets of directories so test files don't need to be moved out
     filenames = [os.path.join(input_dir, f) for f in filenames if not f.startswith('.')]
 
     sizes = {}
