@@ -8,3 +8,5 @@ OG_thesis_test
 *.jpg
 *.JPG
 *.dat
+test[0-999].xml
+train.xml
