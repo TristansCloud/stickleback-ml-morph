@@ -67,6 +67,11 @@ os.mkdir(out)
 
 #   1. copy all photos to a new directory called train in the output directory
 shutil.copytree(args["directory"], out+"/train")
+    # rename to .jpg if the image extension is .JPG
+jpg = set(x[-3:] for x in os.listdir(out + "/train"))
+if jpg == {"JPG"}:
+    for x in os.listdir(out + "/train"):
+        os.rename(out + "/train/" + x, out + "/train/" + x[:-3]+"jpg")
 
 #   2. move 1/n of photos to a test directory
 img = os.listdir(out + "/train")
