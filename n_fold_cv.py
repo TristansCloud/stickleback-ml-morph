@@ -26,16 +26,16 @@ import os
 import shutil
 
 ap = argparse.ArgumentParser()
-ap.add_argument("-d", "--directory", type=str, default='images',
+ap.add_argument("-d", "--data", type=str, default='',
     help="directory containing images", metavar='')
-ap.add_argument("-l", "--landmark", type=str, default='landmarks',
+ap.add_argument("-l", "--landmark", type=str, default='',
     help="landmarks file (csv or tps)", metavar='')
 ap.add_argument("-ct", "--csvtps", type=str, default='csv',
-    help="csv or tps", metavar='')
-ap.add_argument("-n", "--nfold", type=int, default=10,
-    help="number of folds for cross validation", metavar='')
+    help="csv or tps (default = csv)", metavar='')
+ap.add_argument("-n", "--nfold", type=int, default=5,
+    help="number of folds for cross validation (default = 5)", metavar='')
 ap.add_argument("-o", "--out", type=str,
-    help="output directory, defaults to 'output${n-folds}", metavar='')
+    help="output directory (default = output${n-folds})", metavar='')
 # flags for shape_trainer.py
 ap.add_argument("-th", "--threads", type=int, default=2,
     help="number of threads to be used (default = 2)", metavar='')
@@ -55,7 +55,7 @@ ap.add_argument("-nt", "--num-trees", type=int, default=500,
     help="number of regression trees (default = 500)", metavar='')
 args = vars(ap.parse_args())
 
-assert os.path.isdir(args['directory']), "Could not find the folder {}".format(args['directory'])
+assert os.path.isdir(args['data']), "Could not find the folder {}".format(args['data'])
 assert os.path.isfile(args['landmark']), "Could not find the file {}".format(args['landmarks'])
 if args["out"]:
     out = args['out']
@@ -66,7 +66,7 @@ else:
 os.mkdir(out)
 
 #   1. copy all photos to a new directory called train in the output directory
-shutil.copytree(args["directory"], out+"/train")
+shutil.copytree(args["data"], out+"/train")
     # rename to .jpg if the image extension is .JPG
 jpg = set(x[-3:] for x in os.listdir(out + "/train"))
 if jpg == {"JPG"}:
