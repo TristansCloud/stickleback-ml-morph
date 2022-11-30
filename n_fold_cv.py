@@ -26,12 +26,12 @@ import os
 import shutil
 
 ap = argparse.ArgumentParser()
-ap.add_argument("-d", "--data", type=str, default='',
+ap.add_argument("-d", "--data", type=str, required=True,
     help="directory containing images", metavar='')
-ap.add_argument("-l", "--landmark", type=str, default='',
-    help="landmarks file (csv or tps)", metavar='')
+ap.add_argument("-l", "--landmark", type=str, required=True,
+    help="landmarks file (csv or tps files only)", metavar='')
 ap.add_argument("-ct", "--csvtps", type=str, default='csv',
-    help="csv or tps (default = csv)", metavar='')
+    help="filetype of landmarks (csv or tps, default = csv)", metavar='')
 ap.add_argument("-n", "--nfold", type=int, default=5,
     help="number of folds for cross validation (default = 5)", metavar='')
 ap.add_argument("-o", "--out", type=str,
