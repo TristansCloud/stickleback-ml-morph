@@ -87,7 +87,6 @@ for n in range(args["nfold"]):
         shutil.move(x, out + "/test" + str(n))# , copy_function = shutil.copy(x, out + "/test" + str(n))
 
     #   3. generate train and test.xml
-    os.system("echo '### training fold " + str(n)+ "' >> log.txt")
         # test
     cmd = "python3 train_on_subset.py -d " + out + "/train -o " + "train.xml"
     if args["csvtps"] == "csv":
@@ -106,6 +105,7 @@ for n in range(args["nfold"]):
     os.system(cmd + ' >> log.txt')
 
     #   4. train model
+    os.system("echo '### training fold " + str(n)+ "' >> log.txt")
     cmd  = "python3 shape_trainer.py -d " + "train.xml -t " + "test" + str(n) + ".xml -o " + "predictor" + str(n) + " -th " + str(args["threads"]) + " -dp " + str(args["tree_depth"]) + " -c " + str(args["cascade_depth"]) + " -nu " + str(args["nu"]) + " -os " + str(args["oversampling"]) + " -s " + str(args["test_splits"]) + " -f " + str(args["feature_pool_size"]) + " -n " + str(args["num_trees"])
     print(cmd)
     os.system(cmd + ' >> log.txt')
