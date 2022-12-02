@@ -57,7 +57,7 @@ ap.add_argument("-nt", "--num-trees", type=int, default=500,
     help="number of regression trees (default = 500)", metavar='')
 args = vars(ap.parse_args())
 
-assert os.path.isdir(args['data']), "Could not find the folder {}".format(args['data'])
+assert os.path.isdir(args['images']), "Could not find the folder {}".format(args['images'])
 assert os.path.isfile(args['landmark']), "Could not find the file {}".format(args['landmarks'])
 if args["out"]:
     out = args['out']
@@ -68,7 +68,7 @@ else:
 os.mkdir(out)
 
 #   1. copy all photos to a new directory called train in the output directory
-shutil.copytree(args["data"], out+"/train")
+shutil.copytree(args["images"], out+"/train")
 os.system("echo 'copied images to "+ out +"/train' >> log.txt")
     # rename to .jpg if the image extension is .JPG
 jpg = set(x[-3:] for x in os.listdir(out + "/train"))
