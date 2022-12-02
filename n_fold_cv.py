@@ -25,6 +25,8 @@ import argparse
 import os
 import shutil
 
+os.system("echo 'starting run' > log.txt")
+
 ap = argparse.ArgumentParser()
 ap.add_argument("-d", "--data", type=str, required=True,
     help="directory containing images", metavar='')
@@ -67,11 +69,13 @@ os.mkdir(out)
 
 #   1. copy all photos to a new directory called train in the output directory
 shutil.copytree(args["data"], out+"/train")
+os.system("echo 'copied images to "+ out +"/train' >> log.txt")
     # rename to .jpg if the image extension is .JPG
 jpg = set(x[-3:] for x in os.listdir(out + "/train"))
 if jpg == {"JPG"}:
     for x in os.listdir(out + "/train"):
         os.rename(out + "/train/" + x, out + "/train/" + x[:-3]+"jpg")
+    os.system("echo 'changed file extension from JPG to jpg' >> log.txt")
 
 #   2. move 1/n of photos to a test directory
 img = os.listdir(out + "/train")
@@ -91,7 +95,7 @@ for n in range(args["nfold"]):
     elif args["csvtps"] == "tps":
         cmd = cmd + " -t " + args["landmark"]
     print(cmd)
-    os.system(cmd) # import train_on_subset.py? Nahh :)
+    os.system(cmd + ' >> log.txt')
         # train
     cmd = "python3 train_on_subset.py -d " + out + "/test" + str(n) + " -o " + "test" + str(n) + ".xml"
     if args["csvtps"] == "csv":
@@ -99,17 +103,17 @@ for n in range(args["nfold"]):
     elif args["csvtps"] == "tps":
         cmd = cmd + " -t " + args["landmark"]
     print(cmd)
-    os.system(cmd)
+    os.system(cmd + ' >> log.txt')
 
     #   4. train model
     cmd  = "python3 shape_trainer.py -d " + "train.xml -t " + "test" + str(n) + ".xml -o " + "predictor" + str(n) + " -th " + str(args["threads"]) + " -dp " + str(args["tree_depth"]) + " -c " + str(args["cascade_depth"]) + " -nu " + str(args["nu"]) + " -os " + str(args["oversampling"]) + " -s " + str(args["test_splits"]) + " -f " + str(args["feature_pool_size"]) + " -n " + str(args["num_trees"])
     print(cmd)
-    os.system(cmd)
+    os.system(cmd + ' >> log.txt')
        
 
-    #   5. move test photos back to train directory
+    #   5. copy test photos back to train directory
     bck = os.listdir(out + "/test" + str(n))
     for x in bck:
-        shutil.move(os.path.join(out + "/test" + str(n), x), out + "/train")
-#     shutil.move(test) 
-# os.remove("train.xml")
+        shutil.copy2(os.path.join(out + "/test" + str(n), x), out + "/train")
+
+shutil.rmtree(out + "/train") 
