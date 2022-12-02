@@ -28,7 +28,7 @@ import shutil
 os.system("echo 'starting run' > log.txt")
 
 ap = argparse.ArgumentParser()
-ap.add_argument("-d", "--data", type=str, required=True,
+ap.add_argument("-i", "--images", type=str, required=True,
     help="directory containing images", metavar='')
 ap.add_argument("-l", "--landmark", type=str, required=True,
     help="landmarks file (csv or tps files only)", metavar='')
