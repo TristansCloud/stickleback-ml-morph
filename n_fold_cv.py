@@ -88,6 +88,7 @@ for n in range(args["nfold"]):
         shutil.move(x, out + "/test" + str(n))# , copy_function = shutil.copy(x, out + "/test" + str(n))
 
     #   3. generate train and test.xml
+    os.system("echo '### training fold " + str(n)+ "' >> log.txt")
         # test
     cmd = "python3 train_on_subset.py -d " + out + "/train -o " + "train.xml"
     if args["csvtps"] == "csv":
