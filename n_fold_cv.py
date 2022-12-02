@@ -25,8 +25,6 @@ import argparse
 import os
 import shutil
 
-os.system("echo 'starting run' > log.txt")
-
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--images", type=str, required=True,
     help="directory containing images", metavar='')
@@ -66,6 +64,7 @@ else:
     out = "output"+str(args['nfold'])
     assert not os.path.isdir(out), "Output directory already exists" 
 os.mkdir(out)
+os.system("echo 'starting run with " + str(args['nfold']) + " folds' > log.txt")
 
 #   1. copy all photos to a new directory called train in the output directory
 shutil.copytree(args["images"], out+"/train")
