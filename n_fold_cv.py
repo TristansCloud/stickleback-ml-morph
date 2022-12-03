@@ -84,7 +84,7 @@ for n in range(args["nfold"]):
     os.mkdir(out + "/test" + str(n))
     temp_img = [out + "/train/" + x for x in img[n::args["nfold"]]]
     for x in temp_img:
-        shutil.move(x, out + "/test" + str(n))# , copy_function = shutil.copy(x, out + "/test" + str(n))
+        shutil.move(x, out + "/test" + str(n))
 
     #   3. generate train and test.xml
         # test
@@ -116,4 +116,7 @@ for n in range(args["nfold"]):
     for x in bck:
         shutil.copy2(os.path.join(out + "/test" + str(n), x), out + "/train")
 
-shutil.rmtree(out + "/train") 
+shutil.rmtree(out + "/train")
+for x in range(args["nfold"]):
+    shutil.move("predictor" + str(x) + ".dat", out)
+    shutil.move("test" + str(x) + ".xml", out)
