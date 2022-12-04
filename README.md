@@ -11,8 +11,14 @@ python3 n_fold_cv.py -d <data_directory_path> -l <landmark_path>
 
 ## Output
 
-The test${nfold}.xml files can be converted to csv using a python funtion in `utils.py`
+The progress of the run is recorded in `log.txt` which is in the `sticklebac-ml-morph` directory while the run is going but is moved into the output directory during the end of the run.
+
+The test${nfold}.xml files can be converted to csv using the `csv.py` python script. Run this python script from the output directory.
 ```
-from utils import *
-df = dlib_xml_to_pandas('output.xml')
+python3 csv.py -n <nfold>
 ```
+csv.py can convert the `output.xml` landmarks of `prediction.py` to `.csv`, allowing various data analysis platforms to better access the landmark coordinates. 
+```
+python3 csv.py -o output.xml
+```
+
