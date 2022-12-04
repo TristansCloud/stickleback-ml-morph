@@ -68,7 +68,7 @@ os.system("echo 'starting run with " + str(args['nfold']) + " folds' > log.txt")
 
 #   1. copy all photos to a new directory called train in the output directory
 shutil.copytree(args["images"], out+"/train")
-os.system("echo 'copied images to "+ out +"/train' >> log.txt")
+os.system("echo 'copied images from " +args["images"]  + " to "+ out +"/train' >> log.txt")
     # rename to .jpg if the image extension is .JPG
 jpg = set(x[-3:] for x in os.listdir(out + "/train"))
 if jpg == {"JPG"}:
