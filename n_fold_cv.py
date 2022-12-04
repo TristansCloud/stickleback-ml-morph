@@ -117,6 +117,7 @@ for n in range(args["nfold"]):
         shutil.copy2(os.path.join(out + "/test" + str(n), x), out + "/train")
 
 shutil.rmtree(out + "/train")
+shutil.move("log.txt", out)
 for x in range(args["nfold"]):
     shutil.move("predictor" + str(x) + ".dat", out)
     shutil.move("test" + str(x) + ".xml", out)
