@@ -4,7 +4,7 @@ This application is for automatically landmarking photos of threespine stickleba
 
 # Install
 
-Follow the installation steps for (ML-morph)[https://github.com/agporto/ml-morph]:
+Follow the installation steps for [ML-morph](https://github.com/agporto/ml-morph):
 
 ## Python Dependencies
 
@@ -17,7 +17,7 @@ If their dependencies are satisfied, these modules can be installed using:
 
     pip install -r requirements.txt
 
-Alternatively, the dependancies may be installed into a (Conda)[https://docs.conda.io/en/latest/] environment. The companion paper for this project was run from a Python v3.7.11 (Miniconda)[https://docs.conda.io/en/latest/miniconda.html] environment running on an Ubuntu 20.04 server.
+Alternatively, the dependancies may be installed into a [Conda](https://docs.conda.io/en/latest/) environment. The companion paper for this project was run from a Python v3.7.11 [Miniconda](https://docs.conda.io/en/latest/miniconda.html) environment running on an Ubuntu 20.04 server.
 
 ## Optional Dependencies
 - imglab
