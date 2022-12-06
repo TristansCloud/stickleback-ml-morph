@@ -45,7 +45,9 @@ python3 n_fold_cv.py -d <data_directory_path> -l <landmark_path>
 
 # Output
 
-The progress of the run is recorded in `log.txt` which is in the `sticklebac-ml-morph` directory while the run is going but is moved into the output directory at the end of the run.
+The progress of the run is recorded in `log.txt` which is in the git repository directory while the run is going but is moved into the output directory at the end of the run.
+
+<!-- Because files are kept in the main directory and only moved to the output directory at the end of the run, this  -->
 
 The `test<nfold>.xml` files can be converted to csv using the `csv.py` python script. Run this python script from the output directory.
 ```
