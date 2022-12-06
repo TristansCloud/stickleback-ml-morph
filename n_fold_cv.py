@@ -11,10 +11,10 @@
 
 # Steps:
 #   1. Copy all photos to a train subdirectory of the output directory
-#   2. Move 1/n of photos to a test subdirectory of the output directory
+#   2. Move 1/n of photos to a test subdirectory of the output directory # TODO describe what n is and what a fold is
 #   3. Generate train.xml and test.xml
 #   4. Train model
-#   5. Move test photos back to train directory
+#   5. Copy test photos back to train directory
 #   6. Repeat from step 2 for all n folds. Each fold is unique,
 #      the images are lexicographically sorted and every nth file
 #      is moved for a fold. The starting file for counting every
