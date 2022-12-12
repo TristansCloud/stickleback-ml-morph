@@ -4,8 +4,8 @@
 # will be included in train.xml. The image filename in the csv/tps should only include
 # the file, nothing about the path, eg fish.JPG, not /home/fish.JPG.
 
-import utils
 import argparse
+import utils
 import os
 
 ap = argparse.ArgumentParser()

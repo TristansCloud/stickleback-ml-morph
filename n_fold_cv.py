@@ -11,7 +11,7 @@
 
 # Steps:
 #   1. Copy all photos to a train subdirectory of the output directory
-#   2. Move 1/n of photos to a test subdirectory of the output directory # TODO describe what n is and what a fold is
+#   2. Move 1/n of photos to a test subdirectory of the output directory # TO DO describe what n is and what a fold is
 #   3. Generate train.xml and test.xml
 #   4. Train model
 #   5. Copy test photos back to train directory
@@ -20,10 +20,10 @@
 #      is moved for a fold. The starting file for counting every
 #      nth file shifts back by one after each fold.
 
-import utils
 import argparse
 import os
 import shutil
+import utils
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--images", type=str, required=True,
@@ -35,7 +35,7 @@ ap.add_argument("-ct", "--csvtps", type=str, default='csv',
 ap.add_argument("-n", "--nfold", type=int, default=5,
     help="number of folds for cross validation (default = 5)", metavar='')
 ap.add_argument("-o", "--out", type=str,
-    help="output directory (default = output<nfold>)", metavar='')
+    help="output directory (default = outputnfold)", metavar='')
 # flags for shape_trainer.py
 ap.add_argument("-th", "--threads", type=int, default=2,
     help="number of threads to be used (default = 2)", metavar='')
