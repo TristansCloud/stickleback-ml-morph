@@ -38,10 +38,27 @@ Also note that while **ml-morph** can handle multiple image file formats, some c
 
 # Usage
 
-N-fold cross validation. For more options run `python3 n_fold_cv.py --help`
+N-fold cross validation.
 ```
 python3 n_fold_cv.py -d <data_directory_path> -l <landmark_path>
 ```
+To generate a csv of the landmarking error for 5 folds
+```
+mv /output5/predictor[0-4].da
+python3 prediction.py -i output5/test0/ -p output5/predictor0.dat -o output0.xml
+python3 prediction.py -i output5/test1/ -p output5/predictor1.dat -o output1.xml
+python3 prediction.py -i output5/test2/ -p output5/predictor2.dat -o output2.xml
+python3 prediction.py -i output5/test3/ -p output5/predictor3.dat -o output3.xml
+python3 prediction.py -i output5/test4/ -p output5/predictor4.dat -o output4.xml
+```
+
+# Options
+
+```
+python3 n_fold_cv.py --help
+
+```
+
 
 # Output
 
