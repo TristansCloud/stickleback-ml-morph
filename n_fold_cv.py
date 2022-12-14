@@ -35,7 +35,7 @@ ap.add_argument("-ct", "--csvtps", type=str, default='csv',
 ap.add_argument("-n", "--nfold", type=int, default=5,
     help="number of folds for cross validation (default = 5)", metavar='')
 ap.add_argument("-o", "--out", type=str,
-    help="output directory (default = outputnfold)", metavar='')
+    help="output directory (default = output<nfold>)", metavar='')
 # flags for shape_trainer.py
 ap.add_argument("-th", "--threads", type=int, default=2,
     help="number of threads to be used (default = 2)", metavar='')

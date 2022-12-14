@@ -22,9 +22,8 @@ Alternatively, the dependancies may be installed into a [Conda](https://docs.con
 ## Optional Dependencies
 - imglab
 
-For those who want to visualize the xml files produced by the pipeline, we recommend installing the [`imglab`](https://github.com/davisking/dlib/tree/master/tools/imglab) tool that is included in the `dlib 19.7.0` source code. 
+We reccomend using the [`browser version of imglab`](https://imglab.in/) to verify the .xml files of landmarks are properly placed on the images as a quality assurance step in your analysis. Low accuracy models may be training on improperly formatted landmarks. The [`imglab`](https://github.com/davisking/dlib/tree/master/tools/imglab) tool is included in the `dlib 19.7.0` source code and can be installed locally. 
 Please refer to the [`original repository`](https://github.com/davisking/dlib/tree/master/tools/imglab) for installation details and basic usage.
-An alternative [`version of imglab`](https://imglab.in/) is also available and can be used directly from the web browser. We reccomend using the browser version to verify the landmarks are properly placed on the images.
 
 ## Installation notes and general issues
 For Mac users, a series of dependencies for `dlib>=19.7.0` will need to be installed before it can be used. A detailed protocol can be found [here](https://medium.com/@210/install-dlib-on-mac-ff9f4d03ad8).
@@ -38,27 +37,32 @@ Also note that while **ml-morph** can handle multiple image file formats, some c
 
 # Usage
 
-N-fold cross validation.
+## Vignette for N-fold cross validation.
+The 5 fold cross validation is the default for `n_fold_cv.py`
 ```
 python3 n_fold_cv.py -d <data_directory_path> -l <landmark_path>
 ```
-To generate a csv of the landmarking error for 5 folds
+To generate xml and tps landmarks using the predictors from each fold. The nth predictor were not trained with the nth test directory; predictor0 was not trained with test0/ images.
 ```
-mv /output5/predictor[0-4].da
-python3 prediction.py -i output5/test0/ -p output5/predictor0.dat -o output0.xml
-python3 prediction.py -i output5/test1/ -p output5/predictor1.dat -o output1.xml
-python3 prediction.py -i output5/test2/ -p output5/predictor2.dat -o output2.xml
-python3 prediction.py -i output5/test3/ -p output5/predictor3.dat -o output3.xml
-python3 prediction.py -i output5/test4/ -p output5/predictor4.dat -o output4.xml
+python3 prediction.py -i output5/test0/ -p output5/predictor0.dat -o output5/output0.xml
+python3 prediction.py -i output5/test1/ -p output5/predictor1.dat -o output5/output1.xml
+python3 prediction.py -i output5/test2/ -p output5/predictor2.dat -o output5/output2.xml
+python3 prediction.py -i output5/test3/ -p output5/predictor3.dat -o output5/output3.xml
+python3 prediction.py -i output5/test4/ -p output5/predictor4.dat -o output5/output4.xml
 ```
-
-# Options
-
+Make csv files of of the predicted and training landmarks
 ```
-python3 n_fold_cv.py --help
-
+python3 create_csv.py -o output5/output0.csv -i output5/output0.xml
+python3 create_csv.py -o output5/output1.csv -i output5/output1.xml
+python3 create_csv.py -o output5/output2.csv -i output5/output2.xml
+python3 create_csv.py -o output5/output3.csv -i output5/output3.xml
+python3 create_csv.py -o output5/output4.csv -i output5/output4.xml
+python3 create_csv.py -o output5/test0.csv -i output5/test0.xml
+python3 create_csv.py -o output5/test1.csv -i output5/test1.xml
+python3 create_csv.py -o output5/test2.csv -i output5/test2.xml
+python3 create_csv.py -o output5/test3.csv -i output5/test3.xml
+python3 create_csv.py -o output5/test4.csv -i output5/test4.xml
 ```
-
 
 # Output
 

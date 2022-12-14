@@ -11,3 +11,4 @@ OG_thesis_test
 *.dat
 test[0-999].xml
 train.xml
+output[0-99]/
