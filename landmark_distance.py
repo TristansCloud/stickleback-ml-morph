@@ -76,6 +76,8 @@ df2 = df2.reset_index(drop = True)
 if not df1[args["id"]].equals(df2[args["id"]]):
     sys.exit("the id columns could not be made equal between the two sets")
 
+print("passed QA")
+
 print("set 1")
 print(df1)
 print("set 2")
@@ -87,8 +89,6 @@ if len(args["one"]) > 1:
 if len(args["two"]) > 1:
     df2.to_csv(args["output2"],index = False)
     print("saved " + args["output2"])
-
-print("passed QA")
 
 
 #   3. Find the eculidian distance for each landmark and individual between the two landmark sets
