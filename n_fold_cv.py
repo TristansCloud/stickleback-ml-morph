@@ -37,8 +37,8 @@ ap.add_argument("-n", "--nfold", type=int, default=5,
 ap.add_argument("-o", "--out", type=str,
     help="output directory (default = output<nfold>)", metavar='')
 # flags for shape_trainer.py
-ap.add_argument("-th", "--threads", type=int, default=2,
-    help="number of threads to be used (default = 2)", metavar='')
+ap.add_argument("-th", "--threads", type=int, default=1,
+    help="number of threads to be used (default = 1)", metavar='')
 ap.add_argument("-dp", "--tree-depth", type=int, default=4,
     help="choice of tree depth (default = 4)", metavar='')
 ap.add_argument("-c", "--cascade-depth", type=int, default=30,

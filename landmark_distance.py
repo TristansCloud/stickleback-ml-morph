@@ -28,6 +28,12 @@ ap.add_argument("-p", "--path", type=str, default="/",
     help="if the ID column contains a directory name, what character separates the filename and the directory? If there is no directory in the id leave this command blank. If the id contains a '/' that is not because of a directory, set this flag to 'n' (default = /)", metavar='')
 ap.add_argument("-l", "--landmarks", type=int, required=True,
     help="The number of landmarks.", metavar='')
+ap.add_argument("-o1", "--output1", type=str, default = "set1.csv",
+    help="A csv file of the combined landmarks in set 1. Will only be produced if more than one csv was input for set 1. (default = set1.csv)", metavar='')
+ap.add_argument("-o2", "--output2", type=str, default = "set2.csv",
+    help="A csv file of the combined landmarks in set 2. Will only be produced if more than one csv was input for set 2. (default = set2.csv)", metavar='')
+ap.add_argument("-d", "--distance", type=str, default = "distance.csv",
+    help="filename of the distance csv file (default = distance.csv)", metavar='')
 args = vars(ap.parse_args())
 
 
@@ -70,8 +76,15 @@ df2 = df2.reset_index(drop = True)
 if not df1[args["id"]].equals(df2[args["id"]]):
     sys.exit("the id columns could not be made equal between the two sets")
 
+print("set 1")
 print(df1)
+print("set 2")
 print(df2)
+
+if len(args["one"]) > 1:
+    df1.to_csv(args["output1"],index = False)
+if len(args["two"]) > 1:
+    df2.to_csv(args["output2"],index = False)
 
 print("passed QA")
 
@@ -106,60 +119,5 @@ distance = squared_distance.pow(0.5)
 
 output = pd.concat([df1[args["id"]], df2[args["id"]], distance], axis=1)
 output.columns = ["id1", "id2"] + landmark_id
-print(output)
-
-
-
-
-
-
-
-
-
-
-### Doesn't work, worst case just pass the combined and formatted df1 and 2. The squared differences might be working properly but after that its not ready
-# # create a list of column names for the X and Y coordinates
-# column_names = ['X' + str(i) for i in range(40)] + ['Y' + str(i) for i in range(40)]
-
-# # find the differences between the X and Y coordinates of the two dataframes
-# differences = df1[column_names].subtract(df2[column_names])
-
-# # square the differences
-# squared_differences = differences.pow(2)
-
-# for i in range(40):
-#     # add up the squared differences for each landmark
-#     sums = squared_differences[].sum(axis=1)
-# print(sums)
-# # find the square root of the sums to calculate the Euclidean distance for each landmark
-# euclidean_distances = sums.sqrt()
-
-# # print the Euclidean distances
-# print(euclidean_distances)
-
-
-
-
-
-
-
-
-### Alternative double for loop way
-# # create a list of column names for the X and Y coordinates
-# column_names = ['X' + str(i) for i in range(40)] + ['Y' + str(i) for i in range(40)]
-
-# # initialize an empty list to store the Euclidean distances for each row
-# euclidean_distances = []
-
-# # loop through the rows
-# for index, row in df1.iterrows():
-#     # initialize a list to store the Euclidean distances for each landmark
-#     row_distances = []
-
-#     # loop through the X and Y coordinates
-#     for i in range(40):
-#         x1 = df1.loc[index, 'X' + str(i)]
-#         y1 = df2.loc[index, 'Y' + str(i)]
-#         x2 = df2.loc[index, 'X' + str(i)]
-#         y2 = df2.loc[index, 'Y' + str(i)]
-
+output.to_csv(args["distance"], index = False)
+print("wrote " + args["distance"])

@@ -1,10 +1,23 @@
 # Welcome
 
-This application is for automatically landmarking photos of threespine stickleback for the Stuart Lab at Loyola University Chicago. It builds off of simple-ml-morph from the github user agporto.
+This application is for automatically landmarking photos of threespine stickleback for the Stuart Lab at Loyola University Chicago, but can be applied to any images containing a single specimen that needs to be landmarked. It builds off of simple-ml-morph from the github user agporto.
 
 # Install
 
-Follow the installation steps for [ML-morph](https://github.com/agporto/ml-morph):
+The companion paper for this project was run from a Python v3.7.11 [Miniconda](https://docs.conda.io/en/latest/miniconda.html) environment running on an Ubuntu 20.04 server.
+  
+If you have conda installed on your machine open your terminal (MacOS or Linux) or Anaconda prompt shell (Windows). The following script will create a conda environment and install all the needed dependancies
+```
+conda create --name mlmorph python=3.7
+conda activate mlmorph
+conda install -c conda-forge dlib numpy pandas opencv
+```
+Whenever you want to run the automated landmarking program, don't forget to run 
+```
+conda activate mlmorph
+```
+
+If you don't want to use conda, you can follow the installation steps for [ML-morph](https://github.com/agporto/ml-morph):
 
 ## Python Dependencies
 
@@ -17,7 +30,7 @@ If their dependencies are satisfied, these modules can be installed using:
 
     pip install -r requirements.txt
 
-Alternatively, the dependancies may be installed into a [Conda](https://docs.conda.io/en/latest/) environment. The companion paper for this project was run from a Python v3.7.11 [Miniconda](https://docs.conda.io/en/latest/miniconda.html) environment running on an Ubuntu 20.04 server.
+Alternatively, the dependancies may be installed into a [Conda](https://docs.conda.io/en/latest/) environment.
 
 ## Optional Dependencies
 - imglab
@@ -37,12 +50,19 @@ Also note that while **ml-morph** can handle multiple image file formats, some c
 
 # Usage
 
+To learn more about each python script run
+```
+python3 <script_name>.py --help
+```
+
 ## Vignette for N-fold cross validation.
-The 5 fold cross validation is the default for `n_fold_cv.py`
+Cross validation can be done through `n_fold_cv.py`, 5 fold cross validation is the default. This command copies images into a subdirectory and 
 ```
-python3 n_fold_cv.py -d <data_directory_path> -l <landmark_path>
+python3 n_fold_cv.py -i <image_directory_path> -l <landmark_path>
 ```
-To generate xml and tps landmarks using the predictors from each fold. The nth predictor were not trained with the nth test directory; predictor0 was not trained with test0/ images.
+<!-- TODO: include an example based on the sample images and landmarks in ML-morph. To run the example, download the sample images (should I use ) -->
+  
+To generate xml and tps landmarks using the predictors from each fold. The nth predictor were not trained with the nth test directory, i.e. predictor0 was not trained with test0/ images.
 ```
 python3 prediction.py -i output5/test0/ -p output5/predictor0.dat -o output5/output0.xml
 python3 prediction.py -i output5/test1/ -p output5/predictor1.dat -o output5/output1.xml
@@ -63,18 +83,11 @@ python3 create_csv.py -o output5/test2.csv -i output5/test2.xml
 python3 create_csv.py -o output5/test3.csv -i output5/test3.xml
 python3 create_csv.py -o output5/test4.csv -i output5/test4.xml
 ```
-
-# Output
-
-The progress of the run is recorded in `log.txt` which is in the git repository directory while the run is going but is moved into the output directory at the end of the run.
-
-<!-- Because files are kept in the main directory and only moved to the output directory at the end of the run, this  -->
-
-The `test<nfold>.xml` files can be converted to csv using the `csv.py` python script. Run this python script from the output directory.
+The script `landmark_distance.py` takes two sets of the same indivudal's landmarks and finds the distance for each landmark and individual between the two sets. It can accept more than one csv file per set of landmarks. You will likely want to compare the true landmark position to where the model placed the landmark to get a finer understanding of you're model's performance. To do this using the csv files created in the previous step:
+<!-- check how many landmarks are in MLmorphs example, I doubt it is 40 -->
 ```
-python3 csv.py -n <nfold>
+python3 landmark_distance.py -1 output5/output[0-4].csv -2 output5/test[0-4].csv -n 40
 ```
-`csv.py` can convert the `output.xml` landmarks of `prediction.py` to `.csv`, allowing various data analysis platforms to better access the landmark coordinates. 
-```
-python3 csv.py -o output.xml
-```
+`landmark_distance.py` outputs three files; two csv files of landmarks for set 1 and 2, and a csv file of the distance in pixels between the two sets of landmarks. You can use this distance file to explore how error varies among landmarks and individuals. Certain landmarks may be placed less accurately than others. Some features may be present in a small subset of individuals and the model may not handle these outliers well. Check for these conditions using the distance csv and your favorite data analysis software. There are Rscripts from the companion paper to to this for the Stuart Lab's stickleback images.
+
+<!-- TODO: final step should be train the model on the full set of images (no cross validation) -->
