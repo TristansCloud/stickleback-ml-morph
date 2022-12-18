@@ -108,18 +108,23 @@ Y_coord = ['Y' + str(i) for i in range(args["landmarks"])]
 sq_diff_X = squared_differences[X_coord]
 sq_diff_Y = squared_differences[Y_coord]
 
+# Landmark column names
 landmark_id = ["LM" + str(i) for i in range(args["landmarks"])]
 
+# Map old column names to landmark ID because the dataframe.add method wants the same column names
 X_lm_id = dict(zip(X_coord, landmark_id))
 Y_lm_id = dict(zip(Y_coord, landmark_id))
 
 sq_diff_X = sq_diff_X.rename(columns = X_lm_id)
 sq_diff_Y = sq_diff_Y.rename(columns = Y_lm_id)
 
+# Euclidean calculation: A^2 + B^2 = C^2
 squared_distance = sq_diff_X.add(sq_diff_Y)
 distance = squared_distance.pow(0.5)
 
+# add the two set's ID columns
 output = pd.concat([df1[args["id"]], df2[args["id"]], distance], axis=1)
 output.columns = ["id1", "id2"] + landmark_id
+
 output.to_csv(args["distance"], index = False)
 print("wrote " + args["distance"])
