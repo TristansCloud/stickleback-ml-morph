@@ -83,8 +83,10 @@ print(df2)
 
 if len(args["one"]) > 1:
     df1.to_csv(args["output1"],index = False)
+    print("saved " + args["output1"])
 if len(args["two"]) > 1:
     df2.to_csv(args["output2"],index = False)
+    print("saved " + args["output2"])
 
 print("passed QA")
 
