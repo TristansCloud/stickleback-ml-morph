@@ -10,7 +10,7 @@
 
 # Steps
 #   1. Combine csv files for set one and two 
-#   2. Check that the individuals are in the same order, the id does not contain directory names, there are no repeated individuals, and there are the same amount of indivudals in both sets
+#   2. Quality control
 #   3. Find the eculidian distance for each landmark and individual between the two landmark sets
 
 import argparse
@@ -26,10 +26,12 @@ ap.add_argument("-i", "--id", type=str, default="id",
     help="the column name that contains the id for each individual. (default = id)", metavar='')
 ap.add_argument("-p", "--path", type=str, default="/",
     help="if the ID column contains a directory name, what character separates the filename and the directory? If there is no directory in the id leave this command blank. If the id contains a '/' that is not because of a directory, set this flag to 'n' (default = /)", metavar='')
+ap.add_argument("-l", "--landmarks", type=int, required=True,
+    help="The number of landmarks.", metavar='')
 args = vars(ap.parse_args())
 
 
-#   1. combine csv files for set one and two
+#   1. Combine csv files for set one and two
 data = []
 for csv in args["one"]:
     df = pd.read_csv(csv)
@@ -41,15 +43,17 @@ for csv in args["two"]:
     data.append(df)
 df2 = pd.concat(data, ignore_index=True)
 
-#   2. Check that the individuals are in the same order, there are no repeated individuals, and there are the same amount of indivudals in both sets
+
+#   2. Quality control
 if df1.shape != df2.shape:
-    sys.exit("the dimensions of the landmark sets are not the same")
+    sys.exit("the number of rows or columns of the landmark sets are not the same")
 
 if not df1[args["id"]].is_unique:
     sys.exit("duplicated values in the ID colum of set one, set two not checked")
 if not df2[args["id"]].is_unique:
     sys.exit("duplicated values in the ID colum of set two, set one is ok")
 
+# remove filepaths and just keep filenames
 if args["path"] != "n":
     if df1[args["id"]].str.contains(args["path"]).any() and df2[args["id"]].str.contains(args["path"]).any(): # if the path character is in any of the id columns
         df1[args["id"]] = df1[args["id"]].str.split('/')
@@ -57,18 +61,63 @@ if args["path"] != "n":
         df2[args["id"]] = df2[args["id"]].str.split('/')
         df2[args["id"]] = df2[args["id"]].str[-1]
 
+# sort landmarks by id
 df1 = df1.sort_values(by = args["id"])
 df2 = df2.sort_values(by = args["id"])
-df1 = df1.reset_index()
-df2 = df2.reset_index()
+df1 = df1.reset_index(drop = True)
+df2 = df2.reset_index(drop = True)
+
+if not df1[args["id"]].equals(df2[args["id"]]):
+    sys.exit("the id columns could not be made equal between the two sets")
 
 print(df1)
 print(df2)
 
 print("passed QA")
 
+
 #   3. Find the eculidian distance for each landmark and individual between the two landmark sets
-### Doesn't work, worst case just pass the combined and formatted df1 and 2
+
+# create a list of column names for the X and Y coordinates
+column_names = ['X' + str(i) for i in range(args["landmarks"])] + ['Y' + str(i) for i in range(args["landmarks"])]
+
+# find the differences between the X and Y coordinates of the two dataframes
+differences = df1[column_names].subtract(df2[column_names])
+
+# square the differences
+squared_differences = differences.pow(2)
+
+# create seperate X and Y coord dataframes
+X_coord = ['X' + str(i) for i in range(args["landmarks"])]
+Y_coord = ['Y' + str(i) for i in range(args["landmarks"])]
+sq_diff_X = squared_differences[X_coord]
+sq_diff_Y = squared_differences[Y_coord]
+
+landmark_id = ["LM" + str(i) for i in range(args["landmarks"])]
+
+X_lm_id = dict(zip(X_coord, landmark_id))
+Y_lm_id = dict(zip(Y_coord, landmark_id))
+
+sq_diff_X = sq_diff_X.rename(columns = X_lm_id)
+sq_diff_Y = sq_diff_Y.rename(columns = Y_lm_id)
+
+squared_distance = sq_diff_X.add(sq_diff_Y)
+distance = squared_distance.pow(0.5)
+
+output = pd.concat([df1[args["id"]], df2[args["id"]], distance], axis=1)
+output.columns = ["id1", "id2"] + landmark_id
+print(output)
+
+
+
+
+
+
+
+
+
+
+### Doesn't work, worst case just pass the combined and formatted df1 and 2. The squared differences might be working properly but after that its not ready
 # # create a list of column names for the X and Y coordinates
 # column_names = ['X' + str(i) for i in range(40)] + ['Y' + str(i) for i in range(40)]
 
