@@ -27,32 +27,32 @@ import utils
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--images", type=str, required=True,
-    help="directory containing images", metavar='')
+    help="directory containing images")
 ap.add_argument("-l", "--landmark", type=str, required=True,
-    help="landmarks file (csv or tps files only)", metavar='')
+    help="landmarks file (csv or tps files only)")
 ap.add_argument("-ct", "--csvtps", type=str, default='csv',
-    help="filetype of landmarks (csv or tps, default = csv)", metavar='')
+    help="filetype of landmarks (csv or tps, default = csv)")
 ap.add_argument("-n", "--nfold", type=int, default=5,
-    help="number of folds for cross validation (default = 5)", metavar='')
+    help="number of folds for cross validation (default = 5)")
 ap.add_argument("-o", "--out", type=str,
-    help="output directory (default = output<nfold>)", metavar='')
+    help="output directory (default = output<nfold>)")
 # flags for shape_trainer.py
 ap.add_argument("-th", "--threads", type=int, default=1,
-    help="number of threads to be used (default = 1)", metavar='')
+    help="number of threads to be used (default = 1)")
 ap.add_argument("-dp", "--tree-depth", type=int, default=4,
-    help="choice of tree depth (default = 4)", metavar='')
+    help="choice of tree depth (default = 4)")
 ap.add_argument("-c", "--cascade-depth", type=int, default=30,
-    help="choice of cascade depth (default = 30)", metavar='')
+    help="choice of cascade depth (default = 30)")
 ap.add_argument("-nu", "--nu", type=float, default=0.1,
-    help="regularization parameter (default = 0.1)", metavar='')
+    help="regularization parameter (default = 0.1)")
 ap.add_argument("-os", "--oversampling", type=int, default=200,
-    help="oversampling amount (default = 200)", metavar='')
+    help="oversampling amount (default = 200)")
 ap.add_argument("-s", "--test-splits", type=int, default=30,
-    help="number of test splits (default = 30)", metavar='')
+    help="number of test splits (default = 30)")
 ap.add_argument("-f", "--feature-pool-size", type=int, default=1000,
-    help="choice of feature pool size (default = 1000)", metavar='')
+    help="choice of feature pool size (default = 1000)")
 ap.add_argument("-nt", "--num-trees", type=int, default=500,
-    help="number of regression trees (default = 500)", metavar='')
+    help="number of regression trees (default = 500)")
 args = vars(ap.parse_args())
 
 assert os.path.isdir(args['images']), "Could not find the folder {}".format(args['images'])

@@ -56,10 +56,15 @@ python3 <script_name>.py --help
 ```
 
 ## Vignette for N-fold cross validation.
-Cross validation can be done through `n_fold_cv.py`, 5 fold cross validation is the default. This command copies images into a subdirectory and 
+Cross validation can be done through `n_fold_cv.py`, 5 fold cross validation is the default. The basic usage is
 ```
 python3 n_fold_cv.py -i <image_directory_path> -l <landmark_path>
 ```
+To run the example images, run:
+```
+python3 n_fold_cv.py -i images/image-examples/ -l landmarks/landmark-examples/csv-example.csv
+```
+
 <!-- TODO: include an example based on the sample images and landmarks in ML-morph. To run the example, download the sample images (should I use ) -->
   
 To generate xml and tps landmarks using the predictors from each fold. The nth predictor were not trained with the nth test directory, i.e. predictor0 was not trained with test0/ images.
@@ -86,7 +91,7 @@ python3 create_csv.py -o output5/test4.csv -i output5/test4.xml
 The script `landmark_distance.py` takes two sets of the same indivudal's landmarks and finds the distance for each landmark and individual between the two sets. It can accept more than one csv file per set of landmarks. You will likely want to compare the true landmark position to where the model placed the landmark to get a finer understanding of you're model's performance. To do this using the csv files created in the previous step:
 <!-- check how many landmarks are in MLmorphs example, I doubt it is 40 -->
 ```
-python3 landmark_distance.py -1 output5/output[0-4].csv -2 output5/test[0-4].csv -n 40
+python3 landmark_distance.py -1 output5/output[0-4].csv -2 output5/test[0-4].csv -n 40 -o1 mlmorph.csv -o2 manual.csv
 ```
 `landmark_distance.py` outputs three files; two csv files of landmarks for set 1 and 2, and a csv file of the distance in pixels between the two sets of landmarks. You can use this distance file to explore how error varies among landmarks and individuals. Certain landmarks may be placed less accurately than others. Some features may be present in a small subset of individuals and the model may not handle these outliers well. Check for these conditions using the distance csv and your favorite data analysis software. There are Rscripts from the companion paper to to this for the Stuart Lab's stickleback images.
 
