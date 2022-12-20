@@ -18,16 +18,16 @@ ap.add_argument("-th", "--threads", type=int, default=1,
     help="number of threads to be used (default = 1)", metavar='')
 ap.add_argument("-dp", "--tree-depth", type=int, default=4,
     help="choice of tree depth (default = 4)", metavar='')
-ap.add_argument("-c", "--cascade-depth", type=int, default=15,
-    help="choice of cascade depth (default = 15)", metavar='')
+ap.add_argument("-c", "--cascade-depth", type=int, default=30,
+    help="choice of cascade depth (default = 30)", metavar='')
 ap.add_argument("-nu", "--nu", type=float, default=0.1,
     help="regularization parameter (default = 0.1)", metavar='')
-ap.add_argument("-os", "--oversampling", type=int, default=10,
-    help="oversampling amount (default = 10)", metavar='')
-ap.add_argument("-s", "--test-splits", type=int, default=20,
-    help="number of test splits (default = 20)", metavar='')
-ap.add_argument("-f", "--feature-pool-size", type=int, default=500,
-    help="choice of feature pool size (default = 500)", metavar='')
+ap.add_argument("-os", "--oversampling", type=int, default=200,
+    help="oversampling amount (default = 200)", metavar='')
+ap.add_argument("-s", "--test-splits", type=int, default=30,
+    help="number of test splits (default = 30)", metavar='')
+ap.add_argument("-f", "--feature-pool-size", type=int, default=1000,
+    help="choice of feature pool size (default = 1000)", metavar='')
 ap.add_argument("-n", "--num-trees", type=int, default=500,
     help="number of regression trees (default = 500)", metavar='')
 args = vars(ap.parse_args())

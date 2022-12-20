@@ -66,12 +66,12 @@ Cross validation can be done through `n_fold_cv.py`, 5 fold cross validation is 
 ```
 python3 n_fold_cv.py -i <image_directory_path> -l <landmark_path>
 ```
-To run the example images, run:
+To run the n-fold cross validation using the example images, run:
 ```
 python3 n_fold_cv.py -i images/image-examples/ -l landmarks/landmark-examples/csv-example.csv
 ```
   
-To generate xml and tps landmarks using the predictors from each fold. The nth predictor were not trained with the nth test directory, i.e. predictor0 was not trained with test0/ images.
+Generate xml and tps landmarks using the predictors from each fold. The nth predictor were not trained with the nth test directory, i.e. predictor0 was not trained with test0/ images.
 ```
 python3 prediction.py -i output5/test0/ -p output5/predictor0.dat -o output5/output0.xml
 python3 prediction.py -i output5/test1/ -p output5/predictor1.dat -o output5/output1.xml
@@ -92,11 +92,18 @@ python3 create_csv.py -o output5/test2.csv -i output5/test2.xml
 python3 create_csv.py -o output5/test3.csv -i output5/test3.xml
 python3 create_csv.py -o output5/test4.csv -i output5/test4.xml
 ```
-The script `landmark_distance.py` takes two sets of the same indivudal's landmarks and finds the distance for each landmark and individual between the two sets. It can accept more than one csv file per set of landmarks. You will likely want to compare the true landmark position to where the model placed the landmark to get a finer understanding of you're model's performance. To do this using the csv files created in the previous step:
-<!-- check how many landmarks are in MLmorphs example, I doubt it is 40 -->
+The script `landmark_distance.py` takes two sets of the same landmarks and finds the distance for each landmark and individual between the two sets. It can accept more than one csv file per set of landmarks. You will likely want to compare the true landmark position to where the model placed the landmark to get a finer understanding of you're model's performance. To do this using the csv files created in the previous step:
 ```
-python3 landmark_distance.py -1 output5/output[0-4].csv -2 output5/test[0-4].csv -l 40 -o1 mlmorph.csv -o2 manual.csv
+python3 landmark_distance.py -1 output5/output[0-4].csv -2 output5/test[0-4].csv -l 12 -o1 mlmorph.csv -o2 manual.csv
 ```
-`landmark_distance.py` outputs three files; two csv files of landmarks for set 1 and 2, and a csv file of the distance in pixels between the two sets of landmarks. You can use this distance file to explore how error varies among landmarks and individuals. Certain landmarks may be placed less accurately than others. Some features may be present in a small subset of individuals and the model may not handle these outliers well. Check for these conditions using the distance csv and your favorite data analysis software. There are Rscripts from the companion paper to to this for the Stuart Lab's stickleback images.
-
+`landmark_distance.py` outputs three files; two csv files of landmarks for set 1 and 2, and a csv file of the distance in pixels between the two sets of landmarks. You can use this distance file to explore how error varies among landmarks and individuals. Certain landmarks may be placed less accurately than others. Some features may be present in a small subset of individuals and the model may not handle these outliers well. Check for these conditions using the distance csv and your favorite data analysis software. There are Rscripts from the companion paper to to this for the Stuart Lab's stickleback images. These files are created in the main `stickleback-ml-morph` directory. To cleanup and move these files to the output folder, run:
+```
+mv distance.csv mlmorph.csv manual.csv output5/
+```
+Once you are satified with the model's performance, you can retrain it using all available images (no cross validation):
+```
+python3 train_on_subset.py -d images/image-examples/ -c landmarks/landmark-examples/csv-example.csv -o all_images.xml
+python3 shape_trainer.py -d all_images.xml # all_images.xml must be in the same folder as shape_trainer.py
+mv all_images.xml predictor.dat output5/ # cleanup
+```
 <!-- TODO: final step should be train the model on the full set of images (no cross validation) -->
