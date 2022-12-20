@@ -106,4 +106,4 @@ python3 train_on_subset.py -d images/image-examples/ -c landmarks/landmark-examp
 python3 shape_trainer.py -d all_images.xml # all_images.xml must be in the same folder as shape_trainer.py
 mv all_images.xml predictor.dat output5/ # cleanup
 ```
-<!-- TODO: final step should be train the model on the full set of images (no cross validation) -->
+`predictor.dat` is the model trained on all images.
