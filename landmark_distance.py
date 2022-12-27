@@ -11,11 +11,12 @@
 # Steps
 #   1. Combine csv files for set one and two 
 #   2. Quality control
-#   3. Find the eculidian distance for each landmark and individual between the two landmark sets
+#   3. Find the eculidian distance and angle for each landmark and individual between the two landmark sets
 
 import argparse
 import pandas as pd
 import sys
+import math
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-1", "--one", type=str, required=True, nargs='+',
@@ -34,6 +35,8 @@ ap.add_argument("-o2", "--output2", type=str, default = "set2.csv",
     help="A csv file of the combined landmarks in set 2. Will only be produced if more than one csv was input for set 2. (default = set2.csv)")
 ap.add_argument("-d", "--distance", type=str, default = "distance.csv",
     help="filename of the distance csv file (default = distance.csv)")
+ap.add_argument("-a", "--angle", type=str, default = "angle.csv",
+    help="filename of the angle csv file (default = angle.csv)")
 args = vars(ap.parse_args())
 
 
@@ -91,7 +94,7 @@ if len(args["two"]) > 1:
     print("saved " + args["output2"])
 
 
-#   3. Find the eculidian distance for each landmark and individual between the two landmark sets
+#   3. Find the eculidian distance and angle for each landmark and individual between the two landmark sets
 
 # create a list of column names for the X and Y coordinates
 column_names = ['X' + str(i) for i in range(args["landmarks"])] + ['Y' + str(i) for i in range(args["landmarks"])]
@@ -114,7 +117,6 @@ landmark_id = ["LM" + str(i) for i in range(args["landmarks"])]
 # Map old column names to landmark ID because the dataframe.add method wants the same column names
 X_lm_id = dict(zip(X_coord, landmark_id))
 Y_lm_id = dict(zip(Y_coord, landmark_id))
-
 sq_diff_X = sq_diff_X.rename(columns = X_lm_id)
 sq_diff_Y = sq_diff_Y.rename(columns = Y_lm_id)
 
@@ -122,9 +124,40 @@ sq_diff_Y = sq_diff_Y.rename(columns = Y_lm_id)
 squared_distance = sq_diff_X.add(sq_diff_Y)
 distance = squared_distance.pow(0.5)
 
-# add the two set's ID columns
-output = pd.concat([df1[args["id"]], df2[args["id"]], distance], axis=1)
-output.columns = ["id1", "id2"] + landmark_id
+# angle calculation. original landmark is (0,0), reference is (0,1)
+def angle_between(v1, v2):
+  # Calculate the dot product of the two vectors
+  dot_product = v1[0]*v2[0] + v1[1]*v2[1]
+  # Calculate the magnitude of each vector
+  v1_magnitude = math.sqrt(v1[0]**2 + v1[1]**2)
+  v2_magnitude = math.sqrt(v2[0]**2 + v2[1]**2)
+  # Calculate the angle between the vectors using the dot product and magnitudes
+  angle = math.acos(dot_product / (v1_magnitude * v2_magnitude))
+  return angle
 
-output.to_csv(args["distance"], index = False)
+tmpdf = []
+for j, row in differences.iterrows():
+    tmprow = [df1["id"][j], df2["id"][j]]
+    for i in range(args["landmarks"]):
+        v1 = (row['X' + str(i)], row['Y' + str(i)])
+        if v1 == (0, 0):
+            tmprow.append("NaN")
+        else:
+            v2 = (0, 1)
+            angle = angle_between(v1, v2)
+            if v1[0] < 0: # always report radians from counterclockwise
+                angle = 2*math.pi - angle
+            angle = round(angle,3)
+            tmprow.append(angle)
+    tmpdf.append(tmprow)
+
+angles = pd.DataFrame(tmpdf)
+angles.columns = ["id1", "id2"] + landmark_id
+angles.to_csv(args["angle"], index = False)
+print("wrote " + args["angle"])
+
+# add the two set's ID columns for distances
+dout = pd.concat([df1[args["id"]], df2[args["id"]], distance], axis=1)
+dout.columns = ["id1", "id2"] + landmark_id
+dout.to_csv(args["distance"], index = False)
 print("wrote " + args["distance"])
