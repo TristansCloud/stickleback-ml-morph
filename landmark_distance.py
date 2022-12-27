@@ -11,7 +11,7 @@
 # Steps
 #   1. Combine csv files for set one and two 
 #   2. Quality control
-#   3. Find the eculidian distance and angle for each landmark and individual between the two landmark sets
+#   3. Find the eculidian distance and angle in radians for each landmark and individual between the two landmark sets
 
 import argparse
 import pandas as pd
