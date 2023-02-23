@@ -10,9 +10,9 @@ import os
 
 ap = argparse.ArgumentParser()
 ap.add_argument('-d','--directory', type=str, default='images', help="input directory containing image files (default = images)", metavar='')
-ap.add_argument('-c','--csv-file', type=str, default=None, help="(optional) XY coordinate file in csv format", metavar='')
-ap.add_argument('-t','--tps-file', type=str, default=None, help="(optional) tps coordinate file", metavar='')
-ap.add_argument('-o','--output-file', type=str, default='train.xml', help="(optional) output file name (default = train.xml", metavar='')
+ap.add_argument('-c','--csv-file', type=str, default=None, help="XY coordinate file in csv format", metavar='')
+ap.add_argument('-t','--tps-file', type=str, default=None, help="tps coordinate file", metavar='')
+ap.add_argument('-o','--output-file', type=str, default='train.xml', help="(optional) output file name (default = train.xml)", metavar='')
 
 args = vars(ap.parse_args())
 

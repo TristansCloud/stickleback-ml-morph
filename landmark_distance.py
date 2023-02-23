@@ -54,9 +54,6 @@ df2 = pd.concat(data, ignore_index=True)
 
 
 #   2. Quality control
-if df1.shape != df2.shape:
-    sys.exit("the number of rows or columns of the landmark sets are not the same")
-
 if not df1[args["id"]].is_unique:
     sys.exit("duplicated values in the ID colum of set one, set two not checked")
 if not df2[args["id"]].is_unique:
@@ -77,7 +74,24 @@ df1 = df1.reset_index(drop = True)
 df2 = df2.reset_index(drop = True)
 
 if not df1[args["id"]].equals(df2[args["id"]]):
-    sys.exit("the id columns could not be made equal between the two sets")
+    print("attempting to filter out specimens not shared between sets")
+    if any(df1[args["id"]].isin(df2[args["id"]])):
+        df1 = df1[df1[args["id"]].isin(df2[args["id"]])]
+        df2 = df2[df2[args["id"]].isin(df1[args["id"]])]
+        df1 = df1.reset_index(drop = True)
+        df2 = df2.reset_index(drop = True)
+    else:
+        sys.exit("none of the ID's are shared between the two sets, check the ID formatting")
+    
+    print("set 1")
+    print(df1)
+    print("set 2")
+    print(df2)
+    if not df1[args["id"]].equals(df2[args["id"]]):
+        sys.exit("the id columns could not be made equal between the two sets")
+
+if df1.shape != df2.shape:
+    sys.exit("the number of rows or columns of the landmark sets are not the same")
 
 print("passed QA")
 
@@ -147,7 +161,6 @@ for j, row in differences.iterrows():
             angle = angle_between(v1, v2)
             if v1[0] < 0: # always report radians from counterclockwise
                 angle = 2*math.pi - angle
-            angle = round(angle,3)
             tmprow.append(angle)
     tmpdf.append(tmprow)
 
