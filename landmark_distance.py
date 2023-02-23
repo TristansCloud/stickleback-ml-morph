@@ -167,10 +167,10 @@ for j, row in differences.iterrows():
 angles = pd.DataFrame(tmpdf)
 angles.columns = ["id1", "id2"] + landmark_id
 angles.to_csv(args["angle"], index = False)
-print("wrote " + args["angle"])
+print("saved " + args["angle"])
 
 # add the two set's ID columns for distances
 dout = pd.concat([df1[args["id"]], df2[args["id"]], distance], axis=1)
 dout.columns = ["id1", "id2"] + landmark_id
 dout.to_csv(args["distance"], index = False)
-print("wrote " + args["distance"])
+print("saved " + args["distance"])
