@@ -94,11 +94,16 @@ python3 create_csv.py -o output5/test4.csv -i output5/test4.xml
 ```
 The script `landmark_distance.py` takes two sets of the same landmarks and finds the distance for each landmark and individual between the two sets. It can accept more than one csv file per set of landmarks. You will likely want to compare the true landmark position to where the model placed the landmark to get a finer understanding of you're model's performance. To do this using the csv files created in the previous step:
 ```
-python3 landmark_distance.py -1 output5/output[0-4].csv -2 output5/test[0-4].csv -l 12 -o1 mlmorph.csv -o2 manual.csv
+python3 landmark_distance.py -1 output5/output[0-4].csv -2 output5/test[0-4].csv -l 40 -o1 mlmorph.csv -o2 manual.csv
 ```
+<!-- For the manually relandmarked points
+```
+python3 landmark_distance.py -1 output5/manual.csv -2 30_relandmarked_ml_format.csv -l 40 -a 30_relm_angle.csv -d 30_relm_distance.csv
+``` -->
+
 `landmark_distance.py` outputs three files; two csv files of landmarks for set 1 and 2, and a csv file of the distance in pixels between the two sets of landmarks. You can use this distance file to explore how error varies among landmarks and individuals. Certain landmarks may be placed less accurately than others. Some features may be present in a small subset of individuals and the model may not handle these outliers well. Check for these conditions using the distance csv and your favorite data analysis software. There are Rscripts from the companion paper to to this for the Stuart Lab's stickleback images. These files are created in the main `stickleback-ml-morph` directory. To cleanup and move these files to the output folder, run:
 ```
-mv distance.csv mlmorph.csv manual.csv output5/
+mv distance.csv mlmorph.csv manual.csv angle.csv output5/
 ```
 Once you are satified with the model's performance, you can retrain it using all available images (no cross validation):
 ```
@@ -106,4 +111,8 @@ python3 train_on_subset.py -d images/image-examples/ -c landmarks/landmark-examp
 python3 shape_trainer.py -d all_images.xml # all_images.xml must be in the same folder as shape_trainer.py
 mv all_images.xml predictor.dat output5/ # cleanup
 ```
-`predictor.dat` is the model trained on all images.
+`predictor.dat` is the model trained on all images. You can use the `prediction.py` python script to landmark new images using your trained model. The model will likely perform better if these images were taken under the same conditions as the images used to train your model. Make a csv of landmarks from the resulting `output.xml` using `create_csv.py` as was demonstrated earlier
+```
+python3 prediction.py -i /path/to/unlandmarkedimages -p predictor.dat
+python3 create_csv.py -i output.xml -o new_landmarks.csv
+```

@@ -37,6 +37,8 @@ ap.add_argument("-d", "--distance", type=str, default = "distance.csv",
     help="filename of the distance csv file (default = distance.csv)")
 ap.add_argument("-a", "--angle", type=str, default = "angle.csv",
     help="filename of the angle csv file (default = angle.csv)")
+ap.add_argument("-df", "--difference", type=str, default = "difference.csv",
+    help="filename of the set 1 - set 2 coordinates csv file (default = difference.csv)")
 args = vars(ap.parse_args())
 
 
@@ -90,6 +92,13 @@ if not df1[args["id"]].equals(df2[args["id"]]):
     if not df1[args["id"]].equals(df2[args["id"]]):
         sys.exit("the id columns could not be made equal between the two sets")
 
+# create a list of column names for the X and Y coordinates. Use to keep only ID and landmark columns
+coordinate_names = ['X' + str(i) for i in range(args["landmarks"])] + ['Y' + str(i) for i in range(args["landmarks"])]
+column_names = ["id"] + coordinate_names
+print(column_names)
+df1=df1[column_names]
+df2=df2[column_names]
+
 if df1.shape != df2.shape:
     sys.exit("the number of rows or columns of the landmark sets are not the same")
 
@@ -110,11 +119,8 @@ if len(args["two"]) > 1:
 
 #   3. Find the eculidian distance and angle for each landmark and individual between the two landmark sets
 
-# create a list of column names for the X and Y coordinates
-column_names = ['X' + str(i) for i in range(args["landmarks"])] + ['Y' + str(i) for i in range(args["landmarks"])]
-
 # find the differences between the X and Y coordinates of the two dataframes
-differences = df1[column_names].subtract(df2[column_names])
+differences = df1[coordinate_names].subtract(df2[coordinate_names])
 
 # square the differences
 squared_differences = differences.pow(2)
@@ -151,7 +157,7 @@ def angle_between(v1, v2):
 
 tmpdf = []
 for j, row in differences.iterrows():
-    tmprow = [df1["id"][j], df2["id"][j]]
+    tmprow = [df1[args["id"]][j], df2[args["id"]][j]]
     for i in range(args["landmarks"]):
         v1 = (row['X' + str(i)], row['Y' + str(i)])
         if v1 == (0, 0):
@@ -174,3 +180,9 @@ dout = pd.concat([df1[args["id"]], df2[args["id"]], distance], axis=1)
 dout.columns = ["id1", "id2"] + landmark_id
 dout.to_csv(args["distance"], index = False)
 print("saved " + args["distance"])
+
+# add the two set's ID columns for coordinate differences
+dfout = pd.concat([df1[args["id"]], df2[args["id"]], differences], axis=1)
+dfout.columns = ["id1", "id2"] + coordinate_names
+dfout.to_csv(args["difference"], index = False)
+print("saved " + args["difference"])
