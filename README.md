@@ -1,6 +1,6 @@
 # Welcome
 
-This application is for automatically landmarking photos of threespine stickleback for the Stuart Lab at Loyola University Chicago, but can be applied to any images containing a single specimen that needs to be landmarked. It builds off of [simple-ml-morph](https://github.com/agporto/simple-ml-morph) from the github user agporto. It adds functionality for easier full dataset cross validation and creating useful results to asses your models performance on an indivudal specimen and landmark level.
+This application is for automatically landmarking photos of threespine stickleback for the Stuart Lab at Loyola University Chicago, but can be applied to any images containing a single specimen that needs to be landmarked. It builds off of [simple-ml-morph](https://github.com/agporto/simple-ml-morph) from the github user agporto. It adds functionality for easier full dataset cross validation and creating useful results to asses your model's performance on the level of indivudal specimens and landmarks.
 
 # Install
 
