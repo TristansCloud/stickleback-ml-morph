@@ -92,7 +92,11 @@ python3 create_csv.py -o output5/test2.csv -i output5/test2.xml
 python3 create_csv.py -o output5/test3.csv -i output5/test3.xml
 python3 create_csv.py -o output5/test4.csv -i output5/test4.xml
 ```
-The script `landmark_distance.py` takes two sets of the same landmarks and finds the distance for each landmark and individual between the two sets. It can accept more than one csv file per set of landmarks. You will likely want to compare the true landmark position to where the model placed the landmark to get a finer understanding of you're model's performance. To do this using the csv files created in the previous step:
+The script `landmark_distance.py` takes two sets of the same landmarks and provides this data for each landmark and individual between the two sets:
+- The distance between the landmarks
+- The angle between the first landmark, the point (0,1) relative to the first landmark, and the second landmark.
+- The difference in X and Y coordinates (X1,Y1) - (X2, Y2).
+It can accept more than one csv file per set of landmarks. You will likely want to compare the true landmark position to where the model placed the landmark to get a finer understanding of you're model's performance. To do this using the csv files created in the previous step:
 ```
 python3 landmark_distance.py -1 output5/output[0-4].csv -2 output5/test[0-4].csv -l 40 -o1 mlmorph.csv -o2 manual.csv
 ```
