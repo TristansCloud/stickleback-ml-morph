@@ -1,6 +1,6 @@
 # Welcome
 
-This application is for automatically landmarking photos of threespine stickleback for the Stuart Lab at Loyola University Chicago, but can be applied to any images containing a single specimen that needs to be landmarked. It builds off of simple-ml-morph from the github user agporto.
+This application is for automatically landmarking photos of threespine stickleback for the Stuart Lab at Loyola University Chicago, but can be applied to any images containing a single specimen that needs to be landmarked. It builds off of [simple-ml-morph](https://github.com/agporto/simple-ml-morph) from the github user agporto.
 
 # Install
 
@@ -37,10 +37,9 @@ git clone https://github.com/TristansCloud/stickleback-ml-morph.git
 cd stickleback-ml-morph
 ```
 
-## Optional Dependencies
-- imglab
+## Validating landmarks
 
-We reccomend using the [`browser version of imglab`](https://imglab.in/) to verify the .xml files of landmarks are properly placed on the images as a quality assurance step in your analysis. Low accuracy models may be training on improperly formatted landmarks. The [`imglab`](https://github.com/davisking/dlib/tree/master/tools/imglab) tool is included in the `dlib 19.7.0` source code and can be installed locally. 
+We reccomend using the [`browser version of imglab`](https://imglab.in/) to verify the .xml files of landmarks are properly placed on the images as a quality assurance step in your analysis. Low accuracy models may be training on improperly formatted landmarks (we have done this before..). The [`imglab`](https://github.com/davisking/dlib/tree/master/tools/imglab) tool is included in the `dlib 19.7.0` source code and can be installed locally. 
 Please refer to the [`original repository`](https://github.com/davisking/dlib/tree/master/tools/imglab) for installation details and basic usage.
 
 ## Installation notes and general issues
@@ -93,6 +92,7 @@ python3 create_csv.py -o output5/test3.csv -i output5/test3.xml
 python3 create_csv.py -o output5/test4.csv -i output5/test4.xml
 ```
 The script `landmark_distance.py` takes two sets of the same landmarks and provides this data for each landmark and individual between the two sets:
+- if the sets comprise multiple files, a combined landmark file for each set will be produced.
 - The distance between the landmarks
 - The angle between the first landmark, the point (0,1) relative to the first landmark, and the second landmark.
 - The difference in X and Y coordinates (X1,Y1) - (X2, Y2).
@@ -105,7 +105,7 @@ python3 landmark_distance.py -1 output5/output[0-4].csv -2 output5/test[0-4].csv
 python3 landmark_distance.py -1 output5/manual.csv -2 30_relandmarked_ml_format.csv -l 40 -a 30_relm_angle.csv -d 30_relm_distance.csv
 ``` -->
 
-`landmark_distance.py` outputs three files; two csv files of landmarks for set 1 and 2, and a csv file of the distance in pixels between the two sets of landmarks. You can use this distance file to explore how error varies among landmarks and individuals. Certain landmarks may be placed less accurately than others. Some features may be present in a small subset of individuals and the model may not handle these outliers well. Check for these conditions using the distance csv and your favorite data analysis software. There are Rscripts from the companion paper to to this for the Stuart Lab's stickleback images. These files are created in the main `stickleback-ml-morph` directory. To cleanup and move these files to the output folder, run:
+`landmark_distance.py` outputs five files; two csv files of landmarks for set 1 and 2, a csv file of the distance in pixels between the two sets of landmarks. You can use this distance file to explore how error varies among landmarks and individuals. Certain landmarks may be placed less accurately than others. Some features may be present in a small subset of individuals and the model may not handle these outliers well. Check for these conditions using the distance csv and your favorite data analysis software. There are Rscripts from the companion paper to to this for the Stuart Lab's stickleback images. These files are created in the main `stickleback-ml-morph` directory. To cleanup and move these files to the output folder, run:
 ```
 mv distance.csv mlmorph.csv manual.csv angle.csv output5/
 ```
