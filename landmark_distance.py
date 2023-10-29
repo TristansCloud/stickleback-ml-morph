@@ -63,10 +63,10 @@ if not df2[args["id"]].is_unique:
 
 # remove filepaths and just keep filenames
 if args["path"] != "n":
-    if df1[args["id"]].str.contains(args["path"]).any() and df2[args["id"]].str.contains(args["path"]).any(): # if the path character is in any of the id columns
-        df1[args["id"]] = df1[args["id"]].str.split('/')
+    if df1[args["id"]].str.contains(args["path"]).any() or df2[args["id"]].str.contains(args["path"]).any(): # if the path character is in any of the id columns
+        df1[args["id"]] = df1[args["id"]].str.split(args["path"])
         df1[args["id"]] = df1[args["id"]].str[-1]
-        df2[args["id"]] = df2[args["id"]].str.split('/')
+        df2[args["id"]] = df2[args["id"]].str.split(args["path"])
         df2[args["id"]] = df2[args["id"]].str[-1]
 
 # sort landmarks by id
